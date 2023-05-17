@@ -47,25 +47,85 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
+### Step 1:
+Module Declaration. module is a keywords defined in Verilog .
+
+### Step 2:
+Input-Output Delecaration.
+
+Multiplexer has four inputs (I0,I1,I2,I3) and two select lines(S0,S1).
+
+Demultiplexer has single input(I) and two select lines(S0,S1).
+
+### Step 3:
+In multiplexer ,we use both AND logic and OR logic inorder to obtain the result.
+
+In demultiplexer , only AND gates are being used.
+
+### Step 4:
+Ending module. endmodule is a keywords defined in Verilog.
 
 
 
 ### PROGRAM 
+~~~
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: R.HEMAPRIYA
+RegisterNumber:  212221230036
 */
+~~~
+### Multiplexer:
+```
+module muxx (s0,s1,a0,a1,a2,a3,y);
+input s0,s1,a0,a1,a2,a3;
+output y;
+wire a,b,c,d,s0bar,s1bar;
+not(s0bar,s0);
+not(s1bar,s1);
+and(a,s0,s1,a3);
+and(b,s0bar,s1,a2);
+and(c,s0,s1bar,a1);
+and(d,s0bar,s1bar,a0);
+or(y,a,b,c,d);
+endmodule
+```
+### Demultiplexer:
+```
+module demux(a0,a1,a2,a3,s0,s1,i);
+input s0,s1,i;
+output a0,a1,a2,a3;
+wire s0bar,s1bar;
+not (s0bar,s0);
+not (s1bar,s1);
+and (a0,s0bar,s1bar,i);
+and (a1,s0bar,s1,i);
+and (a2,s0,s1bar,i);
+and (a3,s0,s1,i);
+endmodule
+```
 
 
+### Multiplexer:
+
+### RTL LOGIC  
+![mulrtl](https://github.com/Hemapriya-2004/Exercise-07-Multiplexer-and-De--multiplexer/assets/94184828/20f69d0c-e6d0-43db-8d54-5b3266305ab6)
 
 
+### TIMING DIGRAMS  
+
+![multd](https://github.com/Hemapriya-2004/Exercise-07-Multiplexer-and-De--multiplexer/assets/94184828/f60a7634-38f4-41d9-8902-f6277a8225e0)
 
 
+### TRUTH TABLE 
+![mtt](https://github.com/Hemapriya-2004/Exercise-07-Multiplexer-and-De--multiplexer/assets/94184828/d92d0aa9-b75c-4c86-b56e-26d69ec192d1)
+
+
+### Demultiplexer:
 ### RTL LOGIC  
 
 
+![demul](https://github.com/Hemapriya-2004/Exercise-07-Multiplexer-and-De--multiplexer/assets/94184828/e8aaf1a3-afa5-46f1-9935-9d98b557d375)
 
 
 
@@ -74,15 +134,17 @@ RegisterNumber:
 
 ### TIMING DIGRAMS  
 
-
+![demultm](https://github.com/Hemapriya-2004/Exercise-07-Multiplexer-and-De--multiplexer/assets/94184828/df5f667e-0d41-4189-bd67-4ca047936d41)
 
 
 
 ### TRUTH TABLE 
 
+![dtt](https://github.com/Hemapriya-2004/Exercise-07-Multiplexer-and-De--multiplexer/assets/94184828/d0b5fa2a-8d5c-4b8d-8ef9-f94d694de605)
 
 
 
 
 
 ### RESULTS 
+Hence 4x1 Multiplexer and 1x4 Demultiplexer is been implemented and verified using verilog programming and its output are validated.
